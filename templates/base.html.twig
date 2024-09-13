@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+	</head>
+	<body>
+		<div class="relative h-screen w-screen">
+			<div class="h-[100vh] w-[300px] p-4 text-center flex flex-col items-start justify-center gap-2 fixed top-0 left-0 bg-white shadow-lg">
+				<div class="flex gap-2 items-end mb-3">
+					<img src="{{ asset('assets/logo.png') }}" alt="logo" class="w-10 h-10 rounded-sm"/>
+					<h3 class="text-2xl font-medium">Shortkhub</h3>
+				</div>
+				{% include "partials/navbar.html.twig" %}
+			</div>
+			<div class="content pl-[320px] bg-slate-50 min-h-screen py-4 pr-4"> {% block content %}{% endblock %}</div>
+			</div>
+		</body>
+	</html>
