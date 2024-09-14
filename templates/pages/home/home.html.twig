@@ -9,7 +9,6 @@
 		<h3 class="text-sm font-normal">Primary Connections</h3>
 	</div>
 	<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-		{# <CardItem></CardItem> #}
-		<short-card data-title="Url Shooter" data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quassimilique voluptatibus consequatur placeat." data-image="{{asset('assets/url_shooter.png')}}" data-url="https://url-shooter.com/"></short-card>
+		<short-card data-title="Url Shooter" data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quassimilique voluptatibus consequatur placeat." data-image="{{asset('assets/url_shooter.png')}}" data-url="{{ url('screenshot', schemeRelative = true) }}"></short-card>
 	</div>
 {% endblock %}

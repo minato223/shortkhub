@@ -16,15 +16,21 @@ class ElementGenerator extends HTMLElement {
         this.renderReactComponent(props);
     }
 
+    // Fonction pour convertir le style 'kebab-case' en 'camelCase'
+    convertKebabToCamel(str) {
+        return str.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+    }
+
     // Fonction pour extraire les attributs du CustomElement
     getPropsFromAttributes() {
         const attributes = {};
         // Parcourt tous les attributs de l'élément HTML
         for (let attr of this.attributes) {
-            const attrName = attr.name.startsWith("data-")
-                ? attr.name.substring(5) // Supprime le préfixe 'data-' pour dataset
-                : attr.name;
-            attributes[attrName] = attr.value;
+            // Ne traite que les 'data-' attributs
+            if (attr.name.startsWith("data-")) {
+                const attrName = this.convertKebabToCamel(attr.name.substring(5)); // Enlève 'data-' et convertit en camelCase
+                attributes[attrName] = attr.value;
+            }
         }
         return attributes;
     }
@@ -44,7 +50,7 @@ class ElementGenerator extends HTMLElement {
 
     // Indique quels attributs on veut observer
     static get observedAttributes() {
-        return ["data-*", "other-attribute"]; // Ajouter ici les attributs à observer
+        return ["data-*"]; // Observer tous les attributs 'data-*'
     }
 
     disconnectedCallback() {

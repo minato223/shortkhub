@@ -1,0 +1,5 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <screenshot-page data-icon="{{ asset('assets/url_shooter.png') }}" data-title="Url Shooter" data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat quassimilique voluptatibus consequatur placeat." data-generate-url="{{ url('screenshot_generate', schemeRelative = true) }}"
+    data-screenshots="{{ list|json_encode }}"></screenshot-page>
+{% endblock %}

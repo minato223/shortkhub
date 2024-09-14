@@ -1,5 +1,7 @@
 twig:
     file_name_pattern: '*.twig'
+    paths:
+        'src/URLShooter/UI/Resources/views': ~
 
 when@test:
     twig:
