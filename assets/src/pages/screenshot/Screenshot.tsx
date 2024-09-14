@@ -3,7 +3,7 @@ import { post } from "@/lib/http";
 import { Loader, Wand } from "lucide-react";
 import React, { useCallback, useState } from "react";
 import { ScreenshotItem } from "./model/ScreenshotItem";
-
+import * as confetti from "confettis";
 interface ScreenshotProps {
   icon: string;
   title: string;
@@ -45,7 +45,13 @@ const Screenshot = (
           url: target.url.value,
         });
         setSelectedScreenshot(result);
-        setScreenshotsList((prev) => [...prev, result]);
+        setScreenshotsList((prev) => {
+          if (prev.map((item) => item.id).includes(result.id)) {
+            return prev;
+          }
+          confetti.create();
+          return [...prev, result];
+        });
       } catch (error) {
       }
       setLoading(false);
@@ -70,7 +76,7 @@ const Screenshot = (
             placeholder="https://url-shooter.com/"
             name="url"
           />
-          <button className="bg-black p-2 text-gray-300 absolute right-1 top-1/2 -translate-y-1/2">
+          <button className="bg-black p-2 text-gray-300 absolute right-1 top-1/2 -translate-y-1/2" disabled={loading}>
             {loading
               ? <Loader className="animate-spin text-gray-300 h-4 w-4" />
               : <Wand className="h-4 w-4" />}
@@ -84,9 +90,7 @@ const Screenshot = (
                 alt="screenshot"
                 className="block m-auto"
               />
-              <div
-              className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-gray-700 to-transparent from-0 to-50%"
-              >
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-gray-700 to-transparent from-0 to-50%">
               </div>
             </div>
           </a>
@@ -114,8 +118,12 @@ const Screenshot = (
                 />
               </div>
             </a>
-            <h3 className="font-medium text-wrap break-words mb-1">{screenshot.name}</h3>
-            <h3 className="font-medium text-[12px] text-wrap break-words">Date de création : {formatDate(screenshot.createdAt)}</h3>
+            <h3 className="font-medium text-wrap break-words mb-1">
+              {screenshot.name}
+            </h3>
+            <h3 className="font-medium text-[12px] text-wrap break-words">
+              Date de création : {formatDate(screenshot.createdAt)}
+            </h3>
           </div>
         ))}
       </div>
