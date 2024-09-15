@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+      target: frankenphp_dev
+    volumes:
+      - app_data:/app
+    environment:
+      - URL_SHOOTER_WORKER_PORT=${URL_SHOOTER_WORKER_PORT}
+      - URL_DOMAIN=${URL_DOMAIN}
+    ports:
+      # HTTP
+      - target: 80
+        published: "80"
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: "443"
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: "443"
+        protocol: udp
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    networks:
+      - internal-network
+
+volumes:
+  app_data:

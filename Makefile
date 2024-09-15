@@ -6,7 +6,7 @@ IMAGE_VERSION=latest
 #Build
 
 build:
-	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
+	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) . --no-cache
 
 #Push
 
@@ -26,7 +26,7 @@ clean:
 #Production
 
 prod:
-	docker-compose -f compose.yaml -f compose.prod.yaml up --build --remove-orphans
+	docker-compose -f compose.yaml -f compose.prod.yaml up --build --remove-orphans --force-recreate
 
 dev:
 	docker-compose -f compose.yaml -f compose.dev.yaml up --build --remove-orphans
