@@ -1,0 +1,5 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <app-generator-page data-icon="{{ asset('assets/post_generator.png') }}" data-title="App Generator" data-description="Lorem ipsum dolor sit amet consectetur adipisicing elit." data-generate-url="{{ url('post_generator_generate', schemeRelative = true) }}" data-create-url="{{ url('app_generator_create', schemeRelative = true) }}"
+    data-projects="{{ list|json_encode }}"></app-generator-page>
+{% endblock %}

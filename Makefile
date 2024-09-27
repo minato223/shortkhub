@@ -32,4 +32,4 @@ dev:
 	docker-compose -f compose.yaml -f compose.dev.yaml up --build --remove-orphans
 
 local:
-	docker-compose -f compose.yaml up -d && symfony serve
+	docker-compose -f compose.yaml -f compose.dev.yaml up -d && symfony serve

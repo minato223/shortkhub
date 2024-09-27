@@ -19,13 +19,10 @@ export interface CardItemProps {
 
 export const CardItem = ({ title, description, image, url }: CardItemProps) => {
   return (
-    <Card className="w-[350px]">
-      <CardHeader className="flex !flex-row !items-start !justify-between">
-        <div>
-          <img src={image} alt="Image" className="w-10 h-10 rounded-sm mb-3" />
-          <CardTitle>{title}</CardTitle>
-        </div>
-        <a href={url}>
+    <Card>
+      <CardHeader className="flex !flex-row !justify-between items-center">
+        <img src={image} alt="Image" className="w-10 h-10 rounded-sm" />
+        <a href={url} className="m-0">
           <Button variant="outline" className="!m-0">
             <PlugZap className="mr-2 h-4 w-4" />
             Connect
@@ -33,6 +30,7 @@ export const CardItem = ({ title, description, image, url }: CardItemProps) => {
         </a>
       </CardHeader>
       <CardContent>
+        <CardTitle className="mb-3">{title}</CardTitle>
         <CardDescription>
           {description}
         </CardDescription>

@@ -2,6 +2,8 @@ twig:
     file_name_pattern: '*.twig'
     paths:
         'src/URLShooter/UI/Resources/views': ~
+        'src/PostGenerator/UI/Resources/views': ~
+        'src/AppGenerator/UI/Resources/views': ~
 
 when@test:
     twig:

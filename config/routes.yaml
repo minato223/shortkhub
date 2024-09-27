@@ -7,3 +7,9 @@ controllers:
 url_shooter:
     resource: ../src/URLShooter/UI/Controller/
     type: attribute
+post_generator:
+    resource: ../src/PostGenerator/UI/Controller/
+    type: attribute
+app_generator:
+    resource: ../src/AppGenerator/UI/Controller/
+    type: attribute

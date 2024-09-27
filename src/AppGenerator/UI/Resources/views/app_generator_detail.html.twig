@@ -1,0 +1,6 @@
+{% extends "base.html.twig" %}
+{% block content %}
+	<app-generator-detail-page data-generate-url="{{ url('app_generator_generate', schemeRelative = true) }}" data-project="{{ project|json_encode }}"
+	data-download-url="{{ url('file_download', {'uuid': project.uuid}, true) }}"
+	></app-generator-detail-page>
+{% endblock %}

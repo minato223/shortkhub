@@ -4,14 +4,12 @@ import { Loader, Wand } from "lucide-react";
 import React, { useCallback, useState } from "react";
 import { ScreenshotItem } from "./model/ScreenshotItem";
 import * as confetti from "confettis";
-interface ScreenshotProps {
-  icon: string;
-  title: string;
-  description: string;
+import { CardBaseProps } from "../common/interface";
+interface ScreenshotProps extends CardBaseProps {
   generateUrl: string;
   screenshots: string;
 }
-const formatDate = (date: string) => {
+export const formatDate = (date: string) => {
   const dateObject = new Date(date);
   const options: Intl.DateTimeFormatOptions = {
     year: "numeric",
